@@ -64,54 +64,54 @@ def curry[A,B,C](f: (A, B) => C): A => (B => C)
 * A. 
 ```scala
 def curry[A,B,C](f: (A, B) => C): A => (B => C) =
-    a => b => f(a, b)
+  a => b => f(a, b)
 ```
 * B.
 ```scala
 def curry[A,B,C](f: (A, B) => C): A => (B => C) =
-    (a, b) => f(a, b)
+  (a, b) => f(a, b)
 ```
 * C.
 ```scala
 def curry[A,B,C](f: (A, B) => C): A => (B => C) =
-    a => b => f(a, b)f(a)f(b)
+  a => b => f(a, b)f(a)f(b)
 ```
 * D.
 ```scala
 def curry[A,B,C](f: (A, B) => C): A => (B => C) =
-    a => b => f(a)f(b)f(a, b)
+  a => b => f(a)f(b)f(a, b)
 ```
 6. [函数式编程] 下面哪种写法是阶乘函数的尾递归实现：
 
 * A. 
 ```scala
 def fac(n: Int): Int = {
-	if (n < 2) 1
-	else n * f(n - 1)
+  if (n < 2) 1
+  else n * f(n - 1)
 }
 ```
 * B.
 ```scala
 def fac(n: Int): Int = {
-    def go(n: Int, acc: Int): Int = 
-		if (n <= 0) acc
-		else go(n - 1, n * acc)
-    go(n, 1)
+  def go(n: Int, acc: Int): Int = 
+    if (n <= 0) acc
+    else go(n - 1, n * acc)
+  go(n, 1)
 }
 ```
 * C.
 ```scala
 def fac(n: Int): Int = {
-	if (n < 2) 1
-	else f(n * (n - 1))
+  if (n < 2) 1
+  else f(n * (n - 1))
 }
 ```
 * D.
 ```scala
 def fac(n: Int): Int = {
-    def go(n: Int, acc: Int): Int = 
-		if (n <= 0) acc
-		else go(n - 1, n * acc)
+  def go(n: Int, acc: Int): Int = 
+    if (n <= 0) acc
+    else go(n - 1, n * acc)
 }
 ```
 7. [函数式编程] 下面哪种写法是foldRight右折叠函数的尾递归实现：
@@ -119,44 +119,42 @@ def fac(n: Int): Int = {
 * A. 
 ```scala
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-	as match {
-		case Nil => z
-		case (h :: t) => f(h, foldRight(t, z, f))
-	}
+  as match {
+    case Nil => z
+    case (h :: t) => f(h, foldRight(t, z, f))
+  }
 }
 ```
 * B.
 ```scala
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-	@annotation.tailrec
-	def go(acc: B, aas: List[A]): B= {
-		aas match {
-			case Nil => acc
-			case (h :: t) => go(f(h, acc), t)
-		}
+  def go(acc: B, aas: List[A]): B= {
+    aas match {
+		case Nil => acc
+		case (h :: t) => go(f(h, acc), t)
 	}
+}
 	go(z, as)
 }
 ```
 * C.
 ```scala
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-	as match {
-		case Nil => z
-		case (h :: t) => f(h, f(h, foldRight(t, z, f)))
-	}
+  as match {
+    case Nil => z
+    case (h :: t) => f(h, f(h, foldRight(t, z, f)))
+  }
 }
 ```
 * D.
 ```scala
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-	@annotation.tailrec
-	def go(acc: B, aas: List[A]): B= {
-		aas match {
-			case Nil => acc
-			case (h :: t) => go(f(h, acc), t)
-		}
+  def go(acc: B, aas: List[A]): B= {
+    aas match {
+      case Nil => acc
+      case (h :: t) => go(f(h, acc), t)
 	}
+  }
 }
 ```
 8. [函数式编程] partial函数用于部分的替换函数入参，函数声明如下：
@@ -168,22 +166,22 @@ def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
 * A. 
 ```scala
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
-    (b: B) => f(b, a)
+  (b: B) => f(b, a)
 ```
 * B.
 ```scala
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
-    (b: B, a: A) => f(a, b)
+  (b: B, a: A) => f(a, b)
 ```
 * C.
 ```scala
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
-    (b: B) => f(a, f(a, b))
+  (b: B) => f(a, f(a, b))
 ```
 * D.
 ```scala
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
-    (b: B) => f(a, b)
+  (b: B) => f(a, b)
 ```
 9. [函数式编程]有如下类型定义：
 ```scala
@@ -195,55 +193,55 @@ def partial[A,B,C](a: A, f: (A,B) => C): B => C =
 * A. 
 ```scala
 (n: Int, ctx: String) => {
-      if (n > 1 ) (true, ctx, n)
-      else (false, ctx, n)
+  if (n > 1 ) (true, ctx, n)
+  else (false, ctx, n)
 }
 ```
 * B.
 ```scala
 (n: Int, ctx: String) => {
-      if (n > 1 ) n
-      else (false, ctx, n)
+  if (n > 1 ) n
+  else (false, ctx, n)
 }
 ```
 * C.
 ```scala
 (n: Int, ctx: String) => {
-      if (n > 1 ) n
-      else (false, n, n)
+  if (n > 1 ) n
+  else (false, n, n)
 }
 ```
 * D.
 ```scala
 (n: Int, ctx: String) => {
-      if (n > 1 ) n
-      else (false, ctx)
+  if (n > 1 ) n
+  else (false, ctx)
 }
 ```
 10. [函数式编程]下面哪个函数定义不存在副作用，即为纯函数：
 * A. 
 ```scala
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
-    (b: B) => f(a, b)
+  (b: B) => f(a, b)
 ```
 * B.
 ```scala
 def isGoodEnough(n: Int): Boolean = 
-	if (n > 100) true
-	esle {
-		println("Not enough!")
-		false
-	}
+  if (n > 100) true
+  esle {
+    println("Not enough!")
+    false
+  }
 ```
 * C.
 ```scala
 def buyBreakfast(money: Int): Boolean = 
-	val successed = PayService.buyBreakfast(money)
-	successed == 1
+  val successed = PayService.buyBreakfast(money)
+  successed == 1
 ```
 * D.
 ```scala
 def notifyFollower(msg: String) = 
-	val notifyMsg = msg + ", from leader"
-	NettyNofitier.send(msg)
+  val notifyMsg = msg + ", from leader"
+  NettyNofitier.send(msg)
 ```
