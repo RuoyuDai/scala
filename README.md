@@ -14,7 +14,7 @@
 * C.  `"abcd".foldRight(0)((x, acc) => acc + x) / 394`
 * D.  `List.range(1, 10).reverse.take(3).sum / 10`
 ---
-3. [基础语言] scala里的case类有什么特点：。
+3. [基础语言] scala里的case类有什么特点：
 
 * A. Scala编译器会自动补上equals, hashCode, toString, apply, unapply，比较和拷贝方法，无须再编写。
 * B. 可以用在模式匹配中。
