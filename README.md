@@ -13,9 +13,27 @@ val x = List(1, 2, 3, 4, 5) match {
 ```
 x 最终被赋值为：
 
->A.  1    
->B.  42     
->C.  3    
->D.  101   
+* A.  1    
+* B.  42     
+* C.  3    
+* D.  101   
 
-2. [基础语言] 在Scala中引入
+2. [基础语言] 如下表达式，返回为 false 的是：
+
+* A.  `().isInstanceOf[Any]` 
+* B.  `None.isInstanceOf[Option[_]]`
+* C.  `Nil.isInstanceOf[AnyRef]`
+* D.  `null.isInstanceOf[Any]`
+
+3. [基础语言] 如下for语句
+```scala
+for {
+  a <- List.range(1, 3). 
+  (_, b) <- Map("a" -> 1)
+  c <- Seq(4, 5)
+  d <- Some(2)
+  if a < 2; if c > 4
+} yield(a, b, c - 4, d - 1)
+```
+
+4.  
