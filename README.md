@@ -1,20 +1,20 @@
 本次Scala考试包括三个部分：基础语言，函数式编程和编程实战三个类别，题目前会标明类别；本次考试预计需要两小时，包括单选题20道，编程题一道，请把握好时间。
 ---
-1. [基础语言] 为什么要使用scala？
+1. [基础语言] 为什么要使用Scala？
 
 * A. 更高的可维护性和生产率。
 * B. 更好的并行支持和错误处理。
 * C. 更高的可测试和伸缩性。
 * D. 以上都是。
 ---
-2. [基础语言] 下面scala代码返回值不等于1的是：
+2. [基础语言] 下面Scala代码返回值不等于1的是：
 
 * A.  `(1D * 10 / 10).intValue()` 
 * B.  `"1".map(x => x - '0').sum`
-* C.  `"abcd".foldRight(0)((x, acc) => acc + x) / 394`
+* C.  `"abcd".foldRight(0)((x, acc) => acc + x)/ 394`
 * D.  `List.range(1, 10).reverse.take(3).sum / 10`
 ---
-3. [基础语言] scala里的case类有什么特点：
+3. [基础语言] Scala里的case类有什么特点：
 
 * A. Scala编译器会自动补上equals, hashCode, toString, apply, unapply，比较和拷贝方法，无须再编写。
 * B. 可以用在模式匹配中。
