@@ -18,7 +18,7 @@
 
 * A. Scala编译器会自动补上equals, hashCode, toString, apply, unapply，比较和拷贝方法，无须再编写。
 * B. 可以用在模式匹配中。
-* C. Scala编译会帮忙实现序列化借口。
+* C. Scala编译会帮忙实现序列化接口。
 * D. 以上都是。
 ---
 4. [基础语言] 如下Scala代码，
@@ -169,13 +169,13 @@ def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
 * B.
 ```scala
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-  def go(acc: B, aas: List[A]): B= {
+  def go(acc: B, aas: List[A]): B = {
     aas match {
 		case Nil => acc
 		case (h :: t) => go(f(h, acc), t)
-	}
-}
-	go(z, as)
+    }
+  }
+  go(z, as)
 }
 ```
 * C.
@@ -194,7 +194,7 @@ def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
     aas match {
       case Nil => acc
       case (h :: t) => go(f(h, acc), t)
-	}
+    }
   }
 }
 ```
