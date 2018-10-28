@@ -1,5 +1,5 @@
 本次Scala考试包括三个部分：基础语言，函数式编程和编程实战三个类别，题目前会标明类别；本次考试预计需要两小时，包括单选题20道，编程题一道，请把握好时间。
-
+---
 1. [基础语言] 如下Scala代码，
 
 ```scala
@@ -17,14 +17,14 @@ x 最终被赋值为：
 * B.  42     
 * C.  3    
 * D.  101   
-
+---
 2. [基础语言] 如下表达式，返回为 false 的是：
 
 * A.  `().isInstanceOf[Any]` 
 * B.  `None.isInstanceOf[Option[_]]`
 * C.  `Nil.isInstanceOf[AnyRef]`
 * D.  `null.isInstanceOf[Any]`
-
+---
 3. [基础语言] 如下for语句
 ```scala
 for {
@@ -41,7 +41,7 @@ for {
 * B. List((1, 1, 1, 1))
 * C. 4
 * D. 42
-
+---
 4. [基础语言] 如下代码定义了三个变量， 
 ```scala
 val a = 1
@@ -54,7 +54,7 @@ def c = 1
 * B. b = "c"
 * C. c = 2
 * D. b = 3
-
+---
 5. [函数式编程] 柯里化之将函数f(x,y)转化为f(x)(y)的过程，如下函数声明：
 ```scala
 def curry[A,B,C](f: (A, B) => C): A => (B => C)
@@ -81,6 +81,7 @@ def curry[A,B,C](f: (A, B) => C): A => (B => C) =
 def curry[A,B,C](f: (A, B) => C): A => (B => C) =
   a => b => f(a)f(b)f(a, b)
 ```
+---
 6. [函数式编程] 下面哪种写法是阶乘函数的尾递归实现：
 
 * A. 
@@ -114,6 +115,7 @@ def fac(n: Int): Int = {
     else go(n - 1, n * acc)
 }
 ```
+---
 7. [函数式编程] 下面哪种写法是foldRight右折叠函数的尾递归实现：
 
 * A. 
@@ -157,6 +159,7 @@ def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
   }
 }
 ```
+---
 8. [函数式编程] partial函数用于部分的替换函数入参，函数声明如下：
  ```scala
  def partial1[A,B,C](a: A, f: (A,B) => C): B => C
@@ -183,6 +186,7 @@ def partial[A,B,C](a: A, f: (A,B) => C): B => C =
 def partial[A,B,C](a: A, f: (A,B) => C): B => C =
   (b: B) => f(a, b)
 ```
+---
 9. [函数式编程]有如下类型定义：
 ```scala
   type Result = (Boolean, String, Int)
@@ -218,6 +222,7 @@ def partial[A,B,C](a: A, f: (A,B) => C): B => C =
   else (false, ctx)
 }
 ```
+---
 10. [函数式编程]下面哪个函数定义不存在副作用，即为纯函数：
 * A. 
 ```scala
@@ -245,3 +250,4 @@ def notifyFollower(msg: String) =
   val notifyMsg = msg + ", from leader"
   NettyNofitier.send(msg)
 ```
+---
