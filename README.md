@@ -412,5 +412,5 @@ def test() = {
     assert("FizzWizz".equals(count(21)))
     assert("FizzBuzzWizz".equals(count(210)))
     assert(4.equals(count(4)))
-  }
+}
 ```  
