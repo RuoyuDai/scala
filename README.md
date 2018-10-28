@@ -171,8 +171,8 @@ def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
 def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
   def go(acc: B, aas: List[A]): B = {
     aas match {
-		case Nil => acc
-		case (h :: t) => go(f(h, acc), t)
+      case Nil => acc
+      case (h :: t) => go(f(h, acc), t)
     }
   }
   go(z, as)
