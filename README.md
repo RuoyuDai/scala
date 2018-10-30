@@ -272,7 +272,7 @@ def partial[A,B,C](a: A, f: (A,B) => C): B => C =
 ```scala
 def isGoodEnough(n: Int): Boolean = 
   if (n > 100) true
-  esle {
+  else {
     println("Not enough!")
     false
   }
