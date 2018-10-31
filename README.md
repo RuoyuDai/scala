@@ -49,7 +49,7 @@ x 最终被赋值为：
 6. [基础语言] 如下for语句
 ```scala
 for {
-  a <- List.range(1, 3). 
+  a <- List.range(1, 3)
   (_, b) <- Map("a" -> 1)
   c <- Seq(4, 5)
   d <- Some(2)
