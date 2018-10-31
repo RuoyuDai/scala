@@ -101,6 +101,7 @@ abstract class AbsIterator {
   def hasNext: Boolean
   def next(): T
 }
+
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -111,35 +112,43 @@ class StringIterator(s: String) extends AbsIterator {
     ch
   }
 }
+
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
+
 class RichStringIter extends StringIterator("Scala") with RichIterator
 val richStringIter = new RichStringIter
 richStringIter foreach println
+
 ```
-* A. 每行一个字符打印“scala” 
+* A. 每行一个字符打印“Scala” 
 * B. 直接报错
-* C. 打印"scala"
-* D. 打印"scala"的ASSIC码值
+* C. 打印"Scala"
+* D. 打印"Scala"的ASSIC码值
 ---
 11. [基础语言] 如下代码的执行结果是：
 ```scala
 abstract class Animal {
   def name: String
 }
+
 case class Cat(name: String) extends Animal
 case class Dog(name: String) extends Animal
+
 abstract class Printer[-A] {
   def print(value: A): Unit
 }
+
 class AnimalPrinter extends Printer[Animal] {
   def print(animal: Animal): Unit =
     println("The animal's name is: " + animal.name)
+    
 class CatPrinter extends Printer[Cat] {
   def print(cat: Cat): Unit =
     println("The cat's name is: " + cat.name)
 }
+
 object Lesson {
   val myCat: Cat = Cat("Boots")
   def printMyCat(printer: Printer[Cat]): Unit = {
@@ -152,6 +161,7 @@ object Lesson {
     printMyCat(animalPrinter)
   }
 }
+
 ```
 * A.
 ```
@@ -173,13 +183,16 @@ The cat's name is: Boots
 12.[基础编程] 如下代码：
 ```scala
 import scala.concurrent.{ExecutionContext, Future}
+
 implicit val ec = ExecutionContext.global
+
 for(i <- (1 to 10).reverse) {
   Future {
     Thread.sleep(i * 1000)
     println(i + "done")
   }
 }
+
 ```
 在一台4核机器上执行时，会发生什么：
 * A. 没有传入执行的ExecutionContext，根本无法运行。
@@ -192,13 +205,16 @@ for(i <- (1 to 10).reverse) {
 trait User {
   def username: String
 }
+
 trait Tweeter {
   this: User =>
   def tweet(tweetText: String) = println(s"$username: $tweetText")
 }
+
 class VerifiedTweeter(val username_ : String) extends Tweeter with User { 
   def username = s"real $username_"
 }
+
 val realBeyoncé = new VerifiedTweeter("Beyoncé")
 realBeyoncé.tweet("Just spilled my glass of lemonade")
 ```
@@ -214,10 +230,12 @@ real Beyoncé: Just spilled my glass of lemonade
 14. [基础编程] 如下代码进行正则表达式匹配，
 ```scala
 val Pattern = "(.*)=(.*)".r
+
 val a = "Scala=Powerful" match {
   case Pattern(name, adj) => s"$name is $adj."
   case _ => "Php is the best!"
 }
+
 ```
 变量a最终被赋值为：
 * A.
